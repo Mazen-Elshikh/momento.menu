@@ -1,0 +1,462 @@
+ <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Checkout</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="">
+</head>
+<body>
+    
+<div class="container">
+  <div class="checkoutLayout">
+
+      
+      <div class="returnCart">
+          <a href="/">keep shopping</a>
+          <h1>List Product in Cart</h1>
+          <div class="list">
+            <label for="product">Product:</label>
+
+              <div class="item">
+                  <img src="images/1.webp">
+
+                  <div class="info">
+                      <div class="name">PRODUCT 1</div>
+                      <div class="price">$22</div>
+                  </div>
+                  <div class="quantity">5</div>
+                  <div class="returnPrice">$433.3</div>
+
+
+              </div>
+            </label>
+
+          </div>
+
+      </div>
+
+
+
+      <div class="right">
+          <h1>Checkout</h1>
+          <form id="orderForm" action="#">
+
+          <div class="form">
+              <div class="group">
+                  <label for="name">Full Name</label>
+                  <input type="text" name="name" id="name" >
+              </div>
+  
+              <div class="group">
+                  <label for="phone">Phone Number</label>
+                  <input type="text" name="phone" id="phone">
+              </div>
+  
+              <div class="group">
+                  <label for="address">Address</label>
+                  <input type="text" name="address" id="address">
+              </div>
+  
+              <div class="group">
+                  <label for="city">City</label>
+                  <select name="city" id="city">
+                      <option value="">Choose..</option>
+                      <option value="Alex">Alex</option>
+                  </select>
+              </div>
+  
+              <div class="group">
+                  <label for="branch">branch</label>
+                  <select name="branch" id="branch">
+                      <option value="">Choose..</option>
+                      <option value="Borg ElArab">Borg ElArab</option>                     
+                  </select>
+              </div>
+          </div>
+          <div class="return">
+              <div class="row">
+                  <div>Total Quantity</div>
+                  <div class="totalQuantity">70</div>
+              </div>
+              <div class="row">
+                  <div>Total Price</div>
+                  <div class="totalPrice">$900</div>
+              </div>
+          </div>
+          <button type="submit" class="buttonCheckout">CHECKOUT</button>
+
+          </div>
+
+  </div>
+
+
+</div>
+
+<div class="credit">created by <span>Mazen-Elshikh</span></div>
+
+</form>
+
+<script>
+
+document.getElementById('orderForm').addEventListener('submit', function(event) {
+    event.preventDefault();
+
+    var name = document.getElementById('name').value;
+    var phone = document.getElementById('phone').value;
+    var address = document.getElementById('address').value;
+    var city = document.getElementById('city').value;
+    var branch = document.getElementById('branch').value;
+    var totalQuantity = document.querySelector('.totalQuantity').textContent;
+    var totalPrice = document.querySelector('.totalPrice').textContent;
+
+    var productElements = document.querySelectorAll('.item');
+    var products = [];
+    for (var i = 0; i < productElements.length; i++) {
+        var productElement = productElements[i];
+        var productName = productElement.querySelector('.name').textContent;
+        var productPrice = productElement.querySelector('.price').textContent;
+        var productQuantity = productElement.querySelector('.quantity').textContent;
+        products.push(productName + " (" + productQuantity + " x " + productPrice + ")");
+    }
+    var productList = products.join("\n");
+
+    var orderDetails = "Name: " + name + "\nPhone: " + phone + "\nAddress: " + address + "\nCity: " + city + "\nBranch: " + branch + "\n\nProducts:\n" + productList + "\n\nTotal Quantity: " + totalQuantity + "\nTotal Price: " + totalPrice;
+
+    // Send order details to WhatsApp number
+    var whatsappNumber = "201007276757";
+    var whatsappMessage = encodeURIComponent(orderDetails);
+    var whatsappLink = "https://api.whatsapp.com/send?phone=" + whatsappNumber + "&text=" + whatsappMessage;
+    window.open(whatsappLink);
+
+    // Reset form fields
+    document.getElementById('orderForm').reset();
+});
+
+
+
+
+
+
+
+
+
+
+
+
+
+</script>
+</body>
+</html>
+
+
+
+
+
+
+ 
+<style>
+
+
+/* CSS code for a modern and responsive layout */
+
+/* Reset default browser styles */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f2f2f2;
+}
+.credit{
+
+
+    font-weight: bold;
+
+ 
+  background-color: #fff;
+    
+}
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+ 
+}
+
+.checkoutLayout {
+  display: flex;
+  flex-wrap: wrap;
+  max-width: 800px;
+  
+  padding: 20px;
+  background-color: #fff;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+}
+
+.returnCart {
+  text-align: center;
+}
+
+.returnCart a {
+  display: flex;
+  margin-bottom: 20px;
+ margin-top: 20px;
+  color: #000;
+  text-decoration: none;
+}
+
+.list {
+  display: flex;
+  flex-wrap: wrap;
+ margin-bottom: 20px;
+ margin-top: 20px;
+  margin: 0 auto;
+  padding: 20px;
+  background-color: #fff;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+}
+
+.item {
+  display: flex;
+  flex-direction: column;
+
+  flex-wrap: nowrap;
+  margin: 20px;
+  background-color: #fff;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+}
+
+.item img {
+  width: 100%;
+  max-width: 100px;
+  height: 100%;
+  margin-bottom: 10px;
+}
+
+.info {
+  text-align: center;
+  margin-bottom: 10px;
+margin-bottom: 20px;
+ margin-top: 20px;
+
+}
+
+.name {
+  font-weight: bold;
+}
+
+.price {
+  font-size: 20px;
+}
+
+.quantity {
+  font-size: 20px;
+  margin-bottom: 10px;
+font-weight: bold;
+
+}
+
+.returnPrice {
+  font-weight: bold;
+margin-bottom: 20px;
+ margin-top: 20px;
+
+}
+
+.right {
+  flex: 1;
+  padding: 20px;
+}
+
+h1 {
+  font-size: 24px;
+  margin-bottom: 20px;
+}
+
+.form {
+  margin-bottom: 20px;
+}
+
+.group {
+  margin-bottom: 10px;
+}
+
+label {
+  display: block;
+  margin-bottom: 5px;
+  font-weight: bold;
+}
+
+input,
+select {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.return {
+  border-top: 1px solid #ccc;
+  padding-top: 10px;
+  margin-bottom: 20px;
+}
+
+.row {
+  display: flex;
+  justify-content: space-between;
+  
+margin-bottom: 20px;
+ margin-top: 20px;
+
+}
+
+.buttonCheckout {
+  display: block;
+  width: 100%;
+  padding: 10px;
+  background-color: #4caf50;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 16px;
+  text-transform: uppercase;
+}
+
+/* Additional styles */
+a {
+  color: #000;
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+/* Media queries for responsiveness */
+@media screen and (max-width: 960px) {
+  .checkoutLayout {
+    padding: 15px;
+  }
+
+  .item img {
+    max-width: 80px;
+   height: 100%;
+   width: 100%;   }
+
+  .right {
+    padding: 15px;
+  }
+
+  h1 {
+    font-size: 22px;
+  }
+
+  .buttonCheckout {
+    font-size: 14px;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .checkoutLayout {
+    padding: 10px;
+  }
+
+  .item img {
+    max-width: 60px;
+   height: 100%;
+   width: 100%;
+  }
+
+  .right {
+    padding: 10px;
+  }
+
+  h1 {
+    font-size: 20px;
+  }
+
+  .buttonCheckout {
+    font-size: 12px;
+  }
+}
+
+
+
+
+
+
+
+
+ /* Additional styles */
+a {
+  color: #000;
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+/* Media queries for responsiveness */
+@media screen and (max-width: 960px) {
+  .checkoutLayout {
+    padding: 15px;
+  }
+
+  .item img {
+    max-width: 80px;
+  }
+
+  .right {
+    padding: 15px;
+  }
+
+  h1 {
+    font-size: 22px;
+  }
+
+  .buttonCheckout {
+    font-size: 14px;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .checkoutLayout {
+    padding: 10px;
+  }
+
+  
+  .right {
+    padding: 10px;
+  }
+
+  h1 {
+    font-size: 20px;
+  }
+
+  .buttonCheckout {
+    font-size: 12px;
+  }
+}
+
+/* Additional styles for product cards */
+.product-card {
+  margin-bottom: 20px; /* Adds spacing between cards */
+ margin-top: 20px;
+}
+
+ 
+</style>
+<script src="checkout.js"></script>
+
+</body>
+</html>

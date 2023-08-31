@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Coffee</title>
+
+    <!-- SWIPER -->
+    <link rel="stylesheet" href="https://unpkg.com/swiper@7/swiper-bundle.min.css" />
+
+    <!-- Font Awesome CDN Link  -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+
+    <!-- Custom CSS File Link  -->
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="style.css">
+
+</head>
+
+<body>
+
+    <!-- HEADER -->
+    <header class="header">
+        <div id="menu-btn" class="fas fa-bars"></div>
+
+        <a href="#menu" class="logo"><img src="image/1n1.png" 
+         style="width: 70px;
+            height: 70px;" alt=""> </a>
+
+        <nav class="navbar">
+            <a href="#home">home</a>
+            <a href="#about">about</a>
+            <a href="#menu">menu</a>
+            <a href="#review">review</a>
+            <a href="#book">book</a>
+            
+
+
+        </nav>
+       
+       <!-- SEARCH AND CATEGORY BAR -->
+       <div class="search-category">
+        <input type="search" placeholder="Search..." id="search-input">
+        <select name="" id="category-select">
+            <option value="">All Categories</option>
+            <option value="">Coffee</option>
+            <option value="">Tea</option>
+            <option value="">Desserts</option>
+        </select>
+    </div>
+
+
+   
+        <div class="iconCart">
+            <img src="icon.png">
+            <div class="totalQuantity">0</div>
+        </div>
+
+    </header>
+
+    <!-- HOME -->
+    <section class="home" id="home">
+        <div class="row">
+            <div class="content">
+                <h3>fresh coffee in the morning</h3>
+                <a href="#menu" class="btn">buy one now</a>
+            </div>
+
+            <div class="image">
+                <img src="image/1n-removebg-preview.png" class="main-home-image" alt="">
+            </div>
+        </div>
+
+        <div class="image-slider">
+
+            <img src="image/home-img-1.png" alt="">
+            <img src="image/home-img-2.png" alt="">
+            <img src="image/home-img-3.png" alt="">
+            <img src="image/hh.png" alt="">    
+            <img src="image/111w (2).png" alt="">
+            <img src="image/111w (1).png" alt="">
+
+
+        </div>
+    </section>
+
+    <!-- MENU -->
+    <section class="menu" id="menu">
+        <h1 class="heading">our menu <span>popular menu</span></h1>
+
+        <div class="box-container">
+           
+
+
+
+
+            <div class="listProduct">
+
+                <div class="item">
+                    <img src="images/111w (1).png" alt="">
+                    <h2>coffee / Black / coffee</h2>
+                    <div class="price">$50</div>
+                    <button>Add To Cart</button>
+                </div>
+    
+            </div>
+        </div>
+    
+        <div class="cart">
+            <h2>
+                CART
+            </h2>
+            <div class="item" data-category="Coffee">
+              
+            
+            <div class="listCart">
+    
+    
+                <div class="item">
+                    <img src="images/111w (1).png" class="cart">
+                    <div class="content">
+                       <h1><div class="name" >coffee / Black / coffee</div></h1> 
+                       <h1> <div class="price">$50  </div></h1>
+                    </div>
+                    <div class="quantity">
+                        <button><img src="./images/3d.png"></button>
+                      <h1> <span class="value">3</span></h1> 
+                      <button><img src="./images/3d2.png"></button>
+                    </div>
+                </div>
+
+
+            </div>
+    
+            </div>
+    
+            <div class="buttons">
+                <div class="close">
+                    CLOSE
+                </div>
+                <div class="checkout">
+                    <a href="checkout.html">CHECKOUT</a>
+                </div>
+            </div>
+        </div>
+    
+    
+        <script src="app.js"></script>
+        
+        </div>
+    </section>
+
+   
+ 
+    <!-- FOOTER -->
+    <section class="footer">
+        <div class="box-container">
+            <div class="box">
+                <h3>our branches</h3>
+                <a href="#menu"><i class="fas fa-arrow-right"></i> Borg ElArab </a>
+               
+            </div>
+
+            <div class="box">
+                <h3>quick links</h3>
+                <a href="#home"><i class="fas fa-arrow-right"></i> home</a>
+                <a href="#about"><i class="fas fa-arrow-right"></i> about</a>
+                <a href="#menu"><i class="fas fa-arrow-right"></i> menu</a>
+                <a href="#review"><i class="fas fa-arrow-right"></i> review</a>
+                <a href="#book"><i class="fas fa-arrow-right"></i> book</a>
+            </div>
+
+            <div class="box">
+                <h3>contact info</h3>
+                <a href="tel:phoneto:1028057480"><i class="fas fa-phone"></i> 1028057480</a>
+               
+                <a href="mailto:momentomart@gmail.com"><i class="fas fa-envelope"></i>momentomart@gmail.com
+                </a>
+            
+            </div>
+
+            <div class="box">
+                <h3>contact info</h3>
+                <a href="https://www.facebook.com/Momentomart"><i class="fab fa-facebook-f"></i> facebook</a>
+            </div>
+        </div>
+
+        <div class="credit">created by <span>Mazen-Elshikh</span></div>
+    </section>
+
+
+<script>
+
+
+// Get references to the search input, category select, and product list elements
+const searchInput = document.querySelector('#search-input');
+const categorySelect = document.querySelector('#category-select');
+const productList = document.querySelector('.listProduct');
+
+// Function to filter products based on search and category selection
+function filterProducts() {
+    // Get the current search and category values
+    const searchValue = searchInput.value.toLowerCase();
+    const categoryValue = categorySelect.value;
+
+    // Loop through all product items
+    productList.querySelectorAll('.item').forEach(item => {
+        // Get the product name and category
+        const productName = item.querySelector('h2').textContent.toLowerCase();
+        const productCategory = item.dataset.category;
+
+        // Check if the product name includes the search value and if the product category matches the selected category
+        if (productName.includes(searchValue) && (categoryValue === '' || productCategory === categoryValue)) {
+            // If it matches, show the product item
+            item.style.display = 'block';
+        } else {
+            // If it doesn't match, hide the product item
+            item.style.display = 'none';
+        }
+    });
+}
+
+// Add event listeners to the search input and category select elements to call the filterProducts function when their values change
+searchInput.addEventListener('input', filterProducts);
+categorySelect.addEventListener('change', filterProducts);
+
+
+
+</script>
+
+
+
+
+    <!-- SWIPER -->
+    <script src="https://unpkg.com/swiper@7/swiper-bundle.min.js"></script>
+
+    <!-- Custom JS File Link  -->
+    <script src="js/script.js"></script>
+
+</body>
+
+</html>
